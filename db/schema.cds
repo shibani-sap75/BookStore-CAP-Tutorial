@@ -6,10 +6,14 @@ using {
 } from '@sap/cds/common';
 
 entity Books : cuid, managed {
-    title    : String;
-    author   : Association to Authors;
-    Chapters : Composition of many Chapters
-                   on Chapters.book = $self;
+    title       : String;
+    author      : Association to Authors;
+    genre       : String;
+    publishedAt : Date;
+    pages       : Integer;
+    price       : Decimal(9, 2);
+    Chapters    : Composition of many Chapters
+                      on Chapters.book = $self;
 }
 
 entity Authors : cuid, managed {
